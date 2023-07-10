@@ -49,7 +49,8 @@ if choice == "Upload":
         st.warning("Por favor, faça o upload do arquivo .csv.")
 
 if choice == "Análise":
-    st.write("Análise exploratória dos dados com pandas-profiling.")
+    st.subheader("Análise de dados (SweetViz)")
+    st.write("Análise exploratória dos dados com Sweetviz.")
     st.write('---')
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
