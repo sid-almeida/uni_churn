@@ -30,7 +30,7 @@ if choice == "Upload":
     file = st.file_uploader("Upload do arquivo", type=["csv"])
     if file is not None:
         datarame = pd.read_csv(file)
-        st.dataframe(data.head(10))
+        st.dataframe(dataframe.head(10))
         st.success("Upload realizado com sucesso!")
         st.markdown("##")
         dataframe.to_csv("data.csv", index=False)
