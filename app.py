@@ -15,7 +15,7 @@ with st.sidebar:
     st.image("https://github.com/sid-almeida/uni_churn/blob/main/Brainize%20Tech(1).png?raw=true", width=250)
     st.title("UniChurn")
     st.write('---')
-    choice = st.radio("**Navegação:**", ("Upload", "Análise", "Machine Learning", "Previsão de Conjunto"))
+    choice = st.radio("**Navegação:**", ("Upload", "Análise", "Machine Learning", "Previsão de Conjunto", "Sobre"))
     st.info("Esta aplicação permite a análise de dados de uma universidade fictícia, com o objetivo de prever a evasão de alunos."
             " Além disso, ela utiliza Machine Learning para prever o estado futuro de alunos.")
     st.write('---')
@@ -227,4 +227,13 @@ if choice == "Previsão de Conjunto":
                 st.download_button(label="Download do arquivo CSV", data=dataframe_pred.to_csv(), file_name="dataframe_pred.csv", mime="text/csv")
     else:
         st.warning("Faça o treinamento do modelo antes de prever o conjunto de dados.")
+
+
+if choice == "Sobre":
+    st.subheader("Sobre o Projeto")
+    st.write("**Sobre o App**:\nEste aplicativo é um MVP criado para o projeto Sebrae X do Sebrae. Ele usa técnicas de machine learning para prever a desistência de alunos.")
+    st.write("\n**Análise de Dados:**\n O aplicativo utiliza a biblioteca Sweetviz para gerar um relatório HTML de análise de dados. Esse relatório fornece uma visão geral dos dados e insights úteis para entender o conjunto de dados.")
+    st.write("\n**Machine Learning:**\nAlém da análise de dados, o aplicativo cria um modelo de machine learning de forma automatizada para prever a desistência de alunos. Ele usa técnicas como pré-processamento de dados, treinamento do modelo e avaliação dos resultados.")
+    st.write("\n**SebraeX:**\nO projeto Sebrae X do Sebrae é um projeto de inovação que tem como objetivo desenvolver soluções tecnológicas para pequenas e médias empresas. Este aplicativo faz parte desse projeto, fornecendo uma ferramenta para ajudar a identificar possíveis desistências de alunos.")
+
 st.write('Made with ❤️ by [Sidnei Almeida](https://www.linkedin.com/in/saaelmeida93/)')
