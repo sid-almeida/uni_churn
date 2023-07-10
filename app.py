@@ -14,9 +14,11 @@ def st_display_sweetviz(report_html,width=1000,height=500):
 with st.sidebar:
     st.image("https://github.com/sid-almeida/uni_churn/blob/main/Brainize%20Tech(1).png?raw=true", width=250)
     st.title("UniChurn")
+    st.write('---')
     choice = st.radio("**Navegação:**", ("Upload", "Análise", "Machine Learning", "Previsão de Conjunto"))
     st.info("Esta aplicação permite a análise de dados de uma universidade fictícia, com o objetivo de prever a evasão de alunos."
             " Além disso, ela utiliza Machine Learning para prever o estado futuro de alunos.")
+    st.write('---')
 
 if os.path.exists("data.csv"):
     dataframe = pd.read_csv("data.csv")
@@ -24,6 +26,7 @@ if os.path.exists("data.csv"):
 if choice == "Upload":
     st.subheader("Upload de dados (Treino / Teste)")
     st.write("Faça o upload do arquivo .csv para análise e modelagem.")
+    st.write('---')
     file = st.file_uploader("Upload do arquivo", type=["csv"])
     if file is not None:
         data = pd.read_csv(file)
@@ -46,11 +49,13 @@ if choice == "Upload":
         st.warning("Por favor, faça o upload do arquivo .csv.")
 
 if choice == "Análise":
-    st.header("Análise de dados")
-    st.subheader("Análise exploratória dos dados com pandas-profiling.")
+    st.subheader("Análise de dados")
+    st.write("Análise exploratória dos dados com pandas-profiling.")
+    st.write('---')
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
         if dataframe is not None:
+            st.write('---')
             report = sv.analyze(dataframe)
             # st.write(report.show_html(), unsafe_allow_html=True)
             st.success("Análise realizada com sucesso!")
@@ -58,19 +63,28 @@ if choice == "Análise":
             with open("SWEETVIZ_REPORT.html", "w") as html_file:
                 html_file.write(report._page_html)
             st_display_sweetviz("SWEETVIZ_REPORT.html")
+            st.write('---')
         else:
+            st.write('---')
             st.warning("Por favor, faça o upload do arquivo .csv.")
+            st.write('---')
     else:
+        st.write('---')
         st.warning("Por favor, faça o upload do arquivo .csv.")
+        st.write('---')
 
 if choice == "Machine Learning":
-    st.header("Treino do Modelo (Treino / Avaliação)")
-    st.subheader("Selecione o augorítmo para ser utilizado.")
+    st.subheader("Treino do Modelo (Treino / Avaliação)")
+    st.write("Selecione o augorítmo para ser utilizado.")
+    st.write('---')
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
+        st.write('---')
         st.header("Treino de modelos de Machine Learning")
         st.subheader("Treino de modelos de Machine Learning para prever a evasão de alunos.")
+        st.write('---')
         problema = st.selectbox("Selecione o problema:", ("Classificação", "Regressão"))
+        st.write('---')
         if problema == "Classificação":
             modelo = st.selectbox("Selecione o modelo:", ("Logistic Regression", "Random Forest", "XGBoost"))
         if problema == "Regressão":
@@ -179,23 +193,31 @@ if choice == "Machine Learning":
                 pickle.dump(model, open("model.pkl", "wb"))
                 st.success("Modelo salvo com sucesso!")
     else:
+        st.write('---')
         st.warning("Faça o upload de um arquivo .csv para treinar o modelo.")
+        st.write('---')
 
 
 if choice == "Previsão de Conjunto":
+    st.write('---')
     st.subheader("Previsão de Conjunto de Dados")
+    st.write('---')
     # selecionei o modelo 'model.pkl'
     if os.path.exists("model.pkl"):
         modelo = pkl.load(open("model.pkl", "rb"))
         # Upload do dataset em .csv
+        st.write('---')
         st.subheader("Faça o upload do conjunto de dados para prever")
         file_pred = st.file_uploader("Upload do arquivo CSV", type=["csv"])
+        st.write('---')
         if file_pred is not None:
             # leitura do arquivo
             dataframe_pred = pd.read_csv(file_pred, index_col=0)
             # visualização do dataset
+            st.write('---')
             st.subheader("Visualização do conjunto de dados")
             st.write(dataframe_pred)
+            st.write('---')
             # botão para prever o conjunto de dados
             st.button("Prever conjunto de dados")
             if st.button:
