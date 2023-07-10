@@ -199,7 +199,7 @@ if choice == "Machine Learning":
 if choice == "Previsão de Conjunto":
     st.write('---')
     st.subheader("Previsão de Conjunto de Dados")
-    st.write('---')
+    st.write("Previsão de conjunto de dados via arquivo .csv")
     # selecionei o modelo 'model.pkl'
     if os.path.exists("model.pkl"):
         modelo = pkl.load(open("model.pkl", "rb"))
