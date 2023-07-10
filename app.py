@@ -212,7 +212,6 @@ if choice == "Previsão de Conjunto":
             # leitura do arquivo
             dataframe_pred = pd.read_csv(file_pred, index_col=0)
             # visualização do dataset
-            st.write('---')
             st.subheader("Visualização do conjunto de dados")
             st.write(dataframe_pred)
             st.write('---')
