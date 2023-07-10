@@ -29,11 +29,11 @@ if choice == "Upload":
     st.write('---')
     file = st.file_uploader("Upload do arquivo", type=["csv"])
     if file is not None:
-        data = pd.read_csv(file)
+        datarame = pd.read_csv(file)
         st.dataframe(data.head(10))
         st.success("Upload realizado com sucesso!")
         st.markdown("##")
-        data.to_csv("data.csv", index=False)
+        dataframe.to_csv("data.csv", index=False)
         st.success("Arquivo salvo com sucesso!")
         # se o dataframe tiver muitas colunas categóricas, criar outro data_num e transformar em numéricas com o LabelEncoder
         if len(dataframe.select_dtypes(include="object").columns) > 0:
