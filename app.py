@@ -78,7 +78,6 @@ if choice == "Machine Learning":
     st.write('---')
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
-        st.write('---')
         st.header("Treino de modelos de Machine Learning")
         st.subheader("Treino de modelos de Machine Learning para prever a evasão de alunos.")
         st.write('---')
