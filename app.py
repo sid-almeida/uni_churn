@@ -64,6 +64,8 @@ if choice == "Análise":
         st.warning("Por favor, faça o upload do arquivo .csv.")
 
 if choice == "Machine Learning":
+    st.header("Treino do Modelo (Treino / Avaliação)")
+    st.subheader("Selecione o augorítmo para ser utilizado.")
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
         st.header("Treino de modelos de Machine Learning")
