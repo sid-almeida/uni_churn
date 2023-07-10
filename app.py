@@ -12,7 +12,7 @@ def st_display_sweetviz(report_html,width=1000,height=500):
     components.html(page,width=width,height=height,scrolling=True)
 
 with st.sidebar:
-    # st.image("Brainize Tech(1).png", width=250)
+    st.image("https://github.com/sid-almeida/uni_churn/blob/main/Brainize%20Tech(1).png?raw=true", width=250)
     st.title("UniChurn")
     choice = st.radio("**Navegação:**", ("Upload", "Análise", "Machine Learning", "Previsão de Conjunto"))
     st.info("Esta aplicação permite a análise de dados de uma universidade fictícia, com o objetivo de prever a evasão de alunos."
