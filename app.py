@@ -55,7 +55,6 @@ if choice == "Análise":
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
         if dataframe is not None:
-            st.write('---')
             report = sv.analyze(dataframe)
             # st.write(report.show_html(), unsafe_allow_html=True)
             st.success("Análise realizada com sucesso!")
