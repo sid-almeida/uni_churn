@@ -183,25 +183,27 @@ if choice == "Machine Learning":
 if choice == "Previsão de Conjunto":
     st.subheader("Previsão de Conjunto de Dados")
     # selecionei o modelo 'model.pkl'
-    modelo = pkl.load(open("model.pkl", "rb"))
-    # Upload do dataset em .csv
-    st.subheader("Faça o upload do conjunto de dados para prever")
-    file_pred = st.file_uploader("Upload do arquivo CSV", type=["csv"])
-    if file_pred is not None:
-        # leitura do arquivo
-        dataframe_pred = pd.read_csv(file_pred, index_col=0)
-        # visualização do dataset
-        st.subheader("Visualização do conjunto de dados")
-        st.write(dataframe_pred)
-        # botão para prever o conjunto de dados
-        st.button("Prever conjunto de dados")
-        if st.button:
-            # Previ o statos dos alunos
-            dataframe_pred['STATUS'] = modelo.predict(dataframe_pred)
-            dataframe_pred['STATUS'] = dataframe_pred['STATUS'].apply(lambda x: 'Desistirá' if x == 0 else 'Continuará')
-            st.subheader("Visualização do conjunto de dados previsto")
+    if os.path.exists("model.pkl"):
+        modelo = pkl.load(open("model.pkl", "rb"))
+        # Upload do dataset em .csv
+        st.subheader("Faça o upload do conjunto de dados para prever")
+        file_pred = st.file_uploader("Upload do arquivo CSV", type=["csv"])
+        if file_pred is not None:
+            # leitura do arquivo
+            dataframe_pred = pd.read_csv(file_pred, index_col=0)
+            # visualização do dataset
+            st.subheader("Visualização do conjunto de dados")
             st.write(dataframe_pred)
-            # Download do arquivo .csv
-            st.download_button(label="Download do arquivo CSV", data=dataframe_pred.to_csv(), file_name="dataframe_pred.csv", mime="text/csv")
-
+            # botão para prever o conjunto de dados
+            st.button("Prever conjunto de dados")
+            if st.button:
+                # Previ o statos dos alunos
+                dataframe_pred['STATUS'] = modelo.predict(dataframe_pred)
+                dataframe_pred['STATUS'] = dataframe_pred['STATUS'].apply(lambda x: 'Desistirá' if x == 0 else 'Continuará')
+                st.subheader("Visualização do conjunto de dados previsto")
+                st.write(dataframe_pred)
+                # Download do arquivo .csv
+                st.download_button(label="Download do arquivo CSV", data=dataframe_pred.to_csv(), file_name="dataframe_pred.csv", mime="text/csv")
+    else:
+        st.warning("Faça o treinamento do modelo antes de prever o conjunto de dados.")
 st.write('Made with ❤️ by [Sidnei Almeida](https://www.linkedin.com/in/saaelmeida93/)')
