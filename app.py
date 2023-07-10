@@ -22,8 +22,8 @@ if os.path.exists("data.csv"):
     dataframe = pd.read_csv("data.csv")
 
 if choice == "Upload":
-    st.header("Upload de dados (Treino / Teste)")
-    st.subheader("Faça o upload do arquivo .csv para análise e modelagem.")
+    st.subheader("Upload de dados (Treino / Teste)")
+    st.write("Faça o upload do arquivo .csv para análise e modelagem.")
     file = st.file_uploader("Upload do arquivo", type=["csv"])
     if file is not None:
         data = pd.read_csv(file)
