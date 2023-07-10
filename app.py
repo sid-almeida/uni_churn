@@ -49,7 +49,6 @@ if choice == "Upload":
         st.warning("Por favor, faça o upload do arquivo .csv.")
 
 if choice == "Análise":
-    st.subheader("Análise de dados")
     st.write("Análise exploratória dos dados com pandas-profiling.")
     st.write('---')
     if os.path.exists("data.csv"):
