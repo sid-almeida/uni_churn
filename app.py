@@ -29,7 +29,7 @@ if choice == "Upload":
     st.write('---')
     file = st.file_uploader("Upload do arquivo", type=["csv"])
     if file is not None:
-        datarame = pd.read_csv(file)
+        dataframe = pd.read_csv(file)
         st.dataframe(dataframe.head(10))
         st.success("Upload realizado com sucesso!")
         st.markdown("##")
