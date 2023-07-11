@@ -51,7 +51,6 @@ if choice == "Upload":
 if choice == "Análise":
     st.subheader("Análise de dados (SweetViz)")
     st.write("Análise exploratória dos dados com Sweetviz.")
-    st.write('---')
     if os.path.exists("data.csv"):
         dataframe = pd.read_csv("data.csv")
         if dataframe is not None:
