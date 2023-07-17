@@ -209,7 +209,7 @@ if choice == "Previsão de Conjunto":
         st.write('---')
         if file_pred is not None:
             # leitura do arquivo
-            dataframe_pred = pd.read_csv(file_pred)
+            dataframe_pred = pd.read_csv(file_pred, index_col=0)
             # visualização do dataset
             st.subheader("Visualização do conjunto de dados")
             st.write(dataframe_pred)
